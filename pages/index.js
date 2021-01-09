@@ -5,11 +5,22 @@ import "primereact/resources/themes/nova-light/theme.css";
 import "primereact/resources/primereact.min.css";
 import "primeicons/primeicons.css";
 import DataTableDemo from "../Components/DataTableDemo";
+import { TabMenu } from "primereact/tabmenu";
 
 class Index extends Component {
 	constructor() {
 		super();
-		this.state = { count: 0 };
+		this.state = {
+			count: 0,
+			items: [
+				{ label: "Home", icon: "pi pi-fw pi-home", link: "/" },
+				{ label: "Calendar", icon: "pi pi-fw pi-calendar" },
+				{ label: "Edit", icon: "pi pi-fw pi-pencil" },
+				{ label: "Documentation", icon: "pi pi-fw pi-file" },
+				{ label: "Settings", icon: "pi pi-fw pi-cog" },
+				{ label: "Table Header Test", icon: "pi pi-fw pi-file", link: "/test" },
+			]
+		};
 		this.increment = this.increment.bind(this);
 	}
 
@@ -20,11 +31,11 @@ class Index extends Component {
 	render() {
 		return (
 			<div className="App">
-				<div className="App-header">
-					<img src={logo} className="App-logo" alt="logo" />
-					<h2>Welcome to PrimeReact</h2>
-				</div>
-				<DataTableDemo />
+				<TabMenu
+					model={this.state.items}
+					activeItem={this.state.activeItem}
+					onTabChange={(e) => this.setState({ activeItem: e.value })}
+				/>
 
 				<div className="App-intro">
 					<Button label="Click" icon="pi pi-check" onClick={this.increment} />

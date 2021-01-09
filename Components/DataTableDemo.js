@@ -9,8 +9,8 @@ class DataTableDemo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-            products: [],
-            produtosTeste2
+            products: []
+
 		};
 
 		this.productService = new ProductService();
@@ -116,12 +116,11 @@ class DataTableDemo extends Component {
 				quantity: 220
 			}
         ];
-        // produtosTeste
 
 
 
 		this.setState({
-			products: produtosTeste2
+			products: produtosTeste
 		});
 	}
 
